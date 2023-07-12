@@ -33,32 +33,43 @@ const Login = () => {
 							helperText={error && password == '' ? 'Password is required' : ''}
 						/>
 					</div>
-					<Button
-						variant='contained'
-						onClick={(e) => {
-							// e.preventDefault();
-							if (user != '' && password != '') {
-							} else {
-								setError(true);
-								setTimeout(() => {
-									setError(false);
-								}, 3000);
-							}
-						}}
-					>
-						{newUser ? 'Register' : 'Login'}
-					</Button>
-					{!newUser && (
+					<div className={styles.btnPack}>
 						<Button
 							variant='contained'
 							onClick={(e) => {
-								e.preventDefault();
-								setnewUser(true);
+								// e.preventDefault();
+								if (user != '' && password != '') {
+								} else {
+									setError(true);
+									setTimeout(() => {
+										setError(false);
+									}, 2000);
+								}
 							}}
 						>
-							New ?
+							{newUser ? 'Register' : 'Login'}
 						</Button>
-					)}
+						<div className={styles.btnSeperate}>
+							<div>
+								<div></div>
+							</div>
+							<div>OR</div>
+							<div>
+								<div></div>
+							</div>
+						</div>
+						{!newUser && (
+							<Button
+								variant='contained'
+								onClick={(e) => {
+									e.preventDefault();
+									setnewUser(true);
+								}}
+							>
+								New ?
+							</Button>
+						)}
+					</div>
 				</form>
 			</div>
 		</div>

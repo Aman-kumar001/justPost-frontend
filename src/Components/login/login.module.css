@@ -3,12 +3,13 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	min-height: 100vh;
 	width: 100%;
 	background-color: beige;
+	font-family: 'Roboto';
 }
 .login {
-	width: 30%;
+	width: 28rem;
 	height: 80%;
 	/* border: 1px solid black; */
 	display: flex;
@@ -18,17 +19,20 @@
 	gap: 1rem;
 }
 .avtar {
-	height: 25vh;
-	width: 25vh;
+	height: 16rem;
+	width: 16rem;
 	border-radius: 50%;
 	border: 1px solid grey;
 }
 .form {
-	width: auto;
 	/* border: 1px solid black; */
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	width: 80%;
+}
+.form div {
+	width: 100%;
 }
 .form input {
 	width: 100%;
@@ -37,18 +41,56 @@
 	padding: 0.5rem;
 	font-size: 1.2rem;
 	color: grey;
+	font-family: 'Roboto';
 }
-
-@media screen and (max-width: 900px) {
+.btnPack {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.btnPack button {
+	font-size: 1.1rem;
+	font-weight: 700;
+	font-family: 'Roboto';
+}
+.btnSeperate {
+	display: flex;
+	flex-direction: row;
+}
+.btnSeperate div {
+	flex: 1;
+	height: auto;
+	display: flex;
+	align-items: center;
+	color: grey;
+}
+.btnSeperate div:nth-child(2) {
+	flex: 0;
+	margin: 0 0.5rem;
+}
+.btnSeperate div div {
+	border-bottom: 1px solid grey;
+	width: 100%;
+}
+@media screen and (max-width: 1000px) {
 	.login {
-		width: 60%;
+		width: 50%;
 		height: 80%;
+	}
+	.avtar {
+		height: 15rem;
+		width: 15rem;
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
 	.login {
 		width: 90%;
 		height: 80%;
+	}
+	.avtar {
+		height: 12rem;
+		width: 12rem;
 	}
 }
