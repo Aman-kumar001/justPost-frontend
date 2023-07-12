@@ -20,7 +20,7 @@ const Login = ({ token, setToken }) => {
 		}).then((res) => {
 			if (res.status == 200) {
 				setToken(res.token);
-				history.push('/dashboard');
+				// history.push('/dashboard');
 			} else {
 				setError(true);
 				setTimeout(() => {
@@ -43,7 +43,7 @@ const Login = ({ token, setToken }) => {
 		}).then((res) => {
 			if (res.status == 200) {
 				setToken(res.token);
-				history.push('/dashboard');
+				// history.push('/dashboard');
 			} else {
 				setError(true);
 				setTimeout(() => {
