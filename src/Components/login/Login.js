@@ -1,25 +1,37 @@
 import { Button, TextField } from '@mui/material';
 import styles from './login.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const Login = ({ token, setToken }) => {
 	const [newUser, setnewUser] = useState(false);
 	const [user, setUser] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
+	const [allUsers, setAllUsers] = useState([]);
+
+	useEffect(() => {
+		fetch('http://localhost:8000/users/getAllNames')
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setAllUsers(data);
+			});
+	}, []);
 
 	const loginUser = async () => {
-		await fetch('api here', {
+		await fetch('http://localhost:8000/users/logInUser', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: user,
+				name: user,
 				password: password,
 			}),
 		}).then((res) => {
+			console.log(res);
 			if (res.status == 200) {
-				setToken(res.token);
+				console.log('loged in');
+				// setToken(res.token);
 				// history.push('/dashboard');
 			} else {
 				setError(true);
@@ -31,18 +43,18 @@ const Login = ({ token, setToken }) => {
 	};
 
 	const registerUser = async () => {
-		await fetch('api here', {
+		await fetch('http://localhost:8000/users/createUser', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: user,
+				name: user,
 				password: password,
 			}),
 		}).then((res) => {
 			if (res.status == 200) {
-				setToken(res.token);
+				// setToken(res.token);
 				// history.push('/dashboard');
 			} else {
 				setError(true);
@@ -110,17 +122,16 @@ const Login = ({ token, setToken }) => {
 								<div></div>
 							</div>
 						</div>
-						{!newUser && (
-							<Button
-								variant='contained'
-								onClick={(e) => {
-									e.preventDefault();
-									setnewUser(true);
-								}}
-							>
-								New ?
-							</Button>
-						)}
+
+						<Button
+							variant='contained'
+							onClick={(e) => {
+								e.preventDefault();
+								setnewUser(!newUser);
+							}}
+						>
+							{!newUser ? 'New ?' : 'Back'}
+						</Button>
 					</div>
 				</form>
 			</div>
