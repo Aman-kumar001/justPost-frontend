@@ -1,12 +1,14 @@
 import { Button, TextField } from '@mui/material';
 import styles from './login.module.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Login = ({ token, setToken }) => {
 	const [newUser, setnewUser] = useState(false);
 	const [user, setUser] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
 	const [allUsers, setAllUsers] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch('http://localhost:8000/users/getAllNames')
@@ -32,7 +34,7 @@ const Login = ({ token, setToken }) => {
 			if (res.status == 200) {
 				console.log('loged in');
 				// setToken(res.token);
-				// history.push('/dashboard');
+				navigate('/dashboard');
 			} else {
 				setError(true);
 				setTimeout(() => {
@@ -55,7 +57,7 @@ const Login = ({ token, setToken }) => {
 		}).then((res) => {
 			if (res.status == 200) {
 				// setToken(res.token);
-				// history.push('/dashboard');
+				navigate('/dashboard');
 			} else {
 				setError(true);
 				setTimeout(() => {
