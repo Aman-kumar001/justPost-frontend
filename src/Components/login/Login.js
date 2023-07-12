@@ -1,11 +1,58 @@
 import { Button, TextField } from '@mui/material';
 import styles from './login.module.css';
 import { useState } from 'react';
-const Login = () => {
+const Login = ({ token, setToken }) => {
 	const [newUser, setnewUser] = useState(false);
 	const [user, setUser] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
+
+	const loginUser = async () => {
+		await fetch('api here', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: user,
+				password: password,
+			}),
+		}).then((res) => {
+			if (res.status == 200) {
+				setToken(res.token);
+				history.push('/dashboard');
+			} else {
+				setError(true);
+				setTimeout(() => {
+					setError(false);
+				}, 2000);
+			}
+		});
+	};
+
+	const registerUser = async () => {
+		await fetch('api here', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: user,
+				password: password,
+			}),
+		}).then((res) => {
+			if (res.status == 200) {
+				setToken(res.token);
+				history.push('/dashboard');
+			} else {
+				setError(true);
+				setTimeout(() => {
+					setError(false);
+				}, 2000);
+			}
+		});
+	};
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.login}>
@@ -38,7 +85,10 @@ const Login = () => {
 							variant='contained'
 							onClick={(e) => {
 								// e.preventDefault();
-								if (user != '' && password != '') {
+								if (user != '' && password != '' && !newUser) {
+									loginUser();
+								} else if (user != '' && password != '') {
+									registerUser();
 								} else {
 									setError(true);
 									setTimeout(() => {
@@ -49,6 +99,8 @@ const Login = () => {
 						>
 							{newUser ? 'Register' : 'Login'}
 						</Button>
+
+						{/* for 'OR' seperator */}
 						<div className={styles.btnSeperate}>
 							<div>
 								<div></div>
