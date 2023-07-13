@@ -9,11 +9,12 @@ function App() {
 		<div className='App'>
 			<BrowserRouter>
 				<Routes>
-					<Route
+					{/* <Route
 						path='/'
 						element={<Login token={token} setToken={setToken} />}
-					/>
-					<Route path='/dashboard' element={<Dashboard />} />
+					/> */}
+					{/* <Route path='/dashboard' element={<Dashboard />} /> */}
+					<Route path='/' element={<Dashboard />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
