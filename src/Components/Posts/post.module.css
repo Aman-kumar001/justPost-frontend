@@ -1,0 +1,27 @@
+* {
+	font-family: 'Roboto';
+}
+.container {
+	margin-top: 1rem;
+	box-sizing: border-box;
+	color: grey;
+}
+.post {
+	margin: 1rem 0;
+	padding: 1rem;
+	box-sizing: border-box;
+	border-radius: 4px;
+	box-shadow: 0px 0px 10px 1px rgba(232, 109, 42, 0.15);
+}
+.postAuthor {
+	font-size: 0.8rem;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	margin-bottom: 0.5rem;
+}
+.post .authorAvatar {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+}

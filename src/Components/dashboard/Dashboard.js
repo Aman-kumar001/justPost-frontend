@@ -1,21 +1,39 @@
 import { Avatar, Menu, TextField, Button } from '@mui/material';
+import { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
 import Navbar from '../Navbar/Navbar';
+import Post from '../Posts/Post';
 
 const Dashboard = () => {
+	const [posts, setPosts] = useState([
+		{
+			author: 'aman',
+			content:
+				'laurem  ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lore mauris et justo',
+		},
+		{
+			author: 'aman',
+			content: 'ths is the second post',
+		},
+	]);
+	useEffect(() => {
+		//get posts here
+	}, []);
 	return (
 		<div className={styles.container}>
 			<Navbar />
 			<div className={styles.view}>
-				<div>a</div>
+				<div className={styles.rightPanel}>
+					<div className={styles.updates}>Future Updates</div>
+				</div>
 				<div className={styles.contentSpace}>
 					<form action='' className={styles.postForm}>
 						<TextField />
-						<div>
+						<div className={styles.formBtnCont}>
 							<Button variant='contained'>Post</Button>
 						</div>
-						<hr />
 					</form>
+					{posts.length > 0 && <Post posts={posts} />}
 				</div>
 				<div className={styles.user}>
 					<div className={styles.AvatarCont}>
