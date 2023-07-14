@@ -7,28 +7,32 @@ import Post from '../Posts/Post';
 const Dashboard = () => {
 	const [posts, setPosts] = useState([
 		{
-			author: 'aman',
+			author: 'Aman',
+
 			content:
 				'laurem  ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lore mauris et justo',
 			comment: [
 				{
 					author: 'aman',
 					content: 'this is the first comment',
+					level: 1,
 					Comment: [
 						{
 							author: 'aman',
 							content: 'this is the first reply',
+							level: 2,
 						},
 					],
 				},
 				{
 					author: 'aman',
 					content: 'this is the second comment',
+					level: 1,
 				},
 			],
 		},
 		{
-			author: 'aman',
+			author: 'Aman',
 			content: 'ths is the second post',
 		},
 	]);

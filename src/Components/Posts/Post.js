@@ -3,14 +3,21 @@ import { useEffect, useState } from 'react';
 import styles from './post.module.css';
 import { height } from '@mui/system';
 import CommentIcon from '@mui/icons-material/Comment';
+import Comment from '../Comments/Comment';
 const Post = ({ posts }) => {
 	const [comments, setComments] = useState([]);
-	useEffect(() => {}, []);
+	useEffect(() => {
+		var temp = [];
+		posts.forEach((post) => {
+			temp.push(false);
+		});
+		setComments(temp);
+	}, []);
 	return (
 		<div className={styles.container}>
-			{posts.map((post) => {
+			{posts.map((post, index) => {
 				return (
-					<div className={styles.post}>
+					<div className={styles.post} key={index}>
 						<div className={styles.postAuthor}>
 							<Avatar className={styles.authorAvatar} /> {post.author}
 						</div>
@@ -18,11 +25,17 @@ const Post = ({ posts }) => {
 						<div className={styles.postComment}>
 							<CommentIcon
 								onClick={() => {
-									setComments(!comments);
+									setComments((prev) => {
+										var temp = [...prev];
+										temp[index] = !temp[index];
+										return temp;
+									});
 								}}
 							/>
 						</div>
-						{comments && <div className={styles.comments}>hey</div>}
+						{comments[index] && post?.comment && (
+							<Comment comment={post?.comment} />
+						)}
 					</div>
 				);
 			})}
