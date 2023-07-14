@@ -10,6 +10,22 @@ const Dashboard = () => {
 			author: 'aman',
 			content:
 				'laurem  ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lore mauris et justo',
+			comment: [
+				{
+					author: 'aman',
+					content: 'this is the first comment',
+					Comment: [
+						{
+							author: 'aman',
+							content: 'this is the first reply',
+						},
+					],
+				},
+				{
+					author: 'aman',
+					content: 'this is the second comment',
+				},
+			],
 		},
 		{
 			author: 'aman',
