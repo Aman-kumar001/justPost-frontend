@@ -1,5 +1,6 @@
 import { Avatar, Menu, TextField, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import styles from './dashboard.module.css';
 import Navbar from '../Navbar/Navbar';
 import Post from '../Posts/Post';
@@ -102,9 +103,11 @@ const Dashboard = ({ token }) => {
 				</div>
 				<div className={styles.user}>
 					<div className={styles.AvatarCont}>
-						<Avatar className={styles.avatar} />
+						<PersonOutlineOutlinedIcon className={styles.avatar} />
 					</div>
-					<div className={styles.userDetails}>{token.name}</div>
+					<div className={styles.userDetails}>
+						<h2>{token.name}</h2>
+					</div>
 				</div>
 			</div>
 		</div>

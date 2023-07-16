@@ -67,14 +67,19 @@
 	color: #9146ff;
 }
 .postComment span {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	color: #9146ff;
 	border: 1px solid #9146ff;
 	border-radius: 4px;
-	padding: 0.1rem;
+	padding: 0.1rem 0.2rem;
 }
 .postComment span:hover {
 	cursor: pointer;
+	background-color: #9146ff;
+	color: white;
+	border: 1px solid #9146ff;
+	outline: none;
+	border-radius: 4px;
 }
 .replyButtonContainer button {
 	background-color: #9146ff;
