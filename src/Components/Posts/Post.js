@@ -1,11 +1,13 @@
-import { Avatar } from '@mui/material';
+import { Avatar, Button, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
-import styles from './post.module.css';
-import { height } from '@mui/system';
-import CommentIcon from '@mui/icons-material/Comment';
+import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import Comment from '../Comments/Comment';
-const Post = ({ posts, setPosts }) => {
+import styles from './post.module.css';
+const Post = ({ posts, setPosts, token }) => {
 	const [comments, setComments] = useState([]);
+	const [giveComment, setGiveComment] = useState(null);
+	const [postContent, setPostContent] = useState('');
 	useEffect(() => {
 		var temp = [];
 		posts.forEach((post) => {
@@ -13,6 +15,40 @@ const Post = ({ posts, setPosts }) => {
 		});
 		setComments(temp);
 	}, []);
+
+	const getAllPosts = () => {
+		fetch('http://localhost:8000/post/getAllPosts')
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setPosts(data);
+			});
+	};
+
+	const postReply = async (level, parent) => {
+		try {
+			await fetch('http://localhost:8000/comment/createComment', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					content: postContent,
+					author: token.name,
+					type: 'comment',
+					timeStamp: Date.now(),
+					level: level + 1,
+					parent_id: parent,
+				}),
+			});
+
+			getAllPosts();
+			setGiveComment(null);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className={styles.container}>
 			{posts.map((post, index) => {
@@ -23,7 +59,7 @@ const Post = ({ posts, setPosts }) => {
 						</div>
 						<div className={styles.postContent}>{post.content}</div>
 						<div className={styles.postComment}>
-							<CommentIcon
+							<ModeCommentOutlinedIcon
 								onClick={() => {
 									setComments((prev) => {
 										var temp = [...prev];
@@ -32,9 +68,43 @@ const Post = ({ posts, setPosts }) => {
 									});
 								}}
 							/>
+							<AddCommentOutlinedIcon onClick={() => setGiveComment(index)} />
 						</div>
+
+						{giveComment === index && (
+							<form>
+								<TextField
+									onChange={(e) => {
+										setPostContent(e.target.value);
+									}}
+								/>
+								<div
+									style={{
+										display: 'flex',
+										justifyContent: 'right',
+										marginTop: '0.3rem',
+									}}
+									className={styles.replyButtonContainer}
+								>
+									<Button
+										variant='contained'
+										onClick={(e) => {
+											e.preventDefault();
+											postReply(0, post._id);
+										}}
+									>
+										Reply
+									</Button>
+								</div>
+							</form>
+						)}
+
 						{comments[index] && post.comments && post?.comments.length > 0 && (
-							<Comment comment={post?.comments} setPosts={setPosts} />
+							<Comment
+								comment={post?.comments}
+								setPosts={setPosts}
+								token={token}
+							/>
 						)}
 					</div>
 				);

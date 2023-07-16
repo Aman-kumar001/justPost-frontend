@@ -4,7 +4,7 @@ import styles from './dashboard.module.css';
 import Navbar from '../Navbar/Navbar';
 import Post from '../Posts/Post';
 
-const Dashboard = () => {
+const Dashboard = ({ token }) => {
 	const [postContent, setPostContent] = useState('');
 	const [posts, setPosts] = useState([
 		{
@@ -60,7 +60,7 @@ const Dashboard = () => {
 			},
 			body: JSON.stringify({
 				content: postContent,
-				author: 'Aman',
+				author: token.name,
 				type: 'post',
 				timeStamp: Date.now(),
 			}),
@@ -97,7 +97,7 @@ const Dashboard = () => {
 						</div>
 					</form>
 					{posts && posts.length > 0 && (
-						<Post posts={posts} setPosts={setPosts} />
+						<Post posts={posts} setPosts={setPosts} token={token} />
 					)}
 				</div>
 				<div className={styles.user}>

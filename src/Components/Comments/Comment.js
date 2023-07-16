@@ -1,10 +1,8 @@
 import { Avatar, TextField, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
-import CommentIcon from '@mui/icons-material/Comment';
-import CloseIcon from '@mui/icons-material/Close';
 import styles from './comment.module.css';
 
-const Comment = ({ comment, setPosts }) => {
+const Comment = ({ comment, setPosts, token }) => {
 	const [showReply, setShowReply] = useState([]);
 	const [giveReply, setGiveReply] = useState(null);
 	const [postContent, setPostContent] = useState('');
@@ -32,7 +30,7 @@ const Comment = ({ comment, setPosts }) => {
 				},
 				body: JSON.stringify({
 					content: postContent,
-					author: 'test',
+					author: token.name,
 					type: 'comment',
 					timeStamp: Date.now(),
 					level: level + 1,

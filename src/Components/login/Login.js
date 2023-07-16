@@ -29,19 +29,28 @@ const Login = ({ token, setToken }) => {
 				name: user,
 				password: password,
 			}),
-		}).then((res) => {
-			console.log(res);
-			if (res.status == 200) {
-				console.log('loged in');
-				// setToken(res.token);
-				navigate('/dashboard');
-			} else {
-				setError(true);
-				setTimeout(() => {
-					setError(false);
-				}, 2000);
-			}
-		});
+		})
+			.then((res) => {
+				console.log(res);
+				if (res.status == 200) {
+					console.log('loged in');
+					res.json().then((data) => {
+						setToken({
+							id: data._id,
+							name: data.name,
+						});
+					});
+					navigate('/dashboard');
+				} else {
+					setError(true);
+					setTimeout(() => {
+						setError(false);
+					}, 2000);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const registerUser = async () => {
@@ -56,7 +65,12 @@ const Login = ({ token, setToken }) => {
 			}),
 		}).then((res) => {
 			if (res.status == 200) {
-				// setToken(res.token);
+				res.json().then((data) => {
+					setToken({
+						id: data._id,
+						name: data.name,
+					});
+				});
 				navigate('/dashboard');
 			} else {
 				setError(true);
