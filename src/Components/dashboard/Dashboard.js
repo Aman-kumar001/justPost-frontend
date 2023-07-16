@@ -80,7 +80,7 @@ const Dashboard = ({ token }) => {
 		<div className={styles.container}>
 			<Navbar />
 			<div className={styles.view}>
-				<div className={styles.rightPanel}>
+				<div className={styles.LeftPanel}>
 					<div className={styles.updates}>Future Updates</div>
 				</div>
 				<div className={styles.contentSpace}>
@@ -104,7 +104,7 @@ const Dashboard = ({ token }) => {
 					<div className={styles.AvatarCont}>
 						<Avatar className={styles.avatar} />
 					</div>
-					<div className={styles.userDetails}>Aman</div>
+					<div className={styles.userDetails}>{token.name}</div>
 				</div>
 			</div>
 		</div>

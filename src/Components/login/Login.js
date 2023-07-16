@@ -35,10 +35,18 @@ const Login = ({ token, setToken }) => {
 				if (res.status == 200) {
 					console.log('loged in');
 					res.json().then((data) => {
+						console.log(data);
 						setToken({
-							id: data._id,
-							name: data.name,
+							id: data.data[0]._id,
+							name: data.data[0].name,
 						});
+						localStorage.setItem(
+							'token',
+							JSON.stringify({
+								id: data.data[0]._id,
+								name: data.data[0].name,
+							})
+						);
 					});
 					navigate('/dashboard');
 				} else {

@@ -1,7 +1,8 @@
 import { Avatar, Button, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import Comment from '../Comments/Comment';
 import styles from './post.module.css';
 const Post = ({ posts, setPosts, token }) => {
@@ -26,6 +27,7 @@ const Post = ({ posts, setPosts, token }) => {
 	};
 
 	const postReply = async (level, parent) => {
+		console.log(token);
 		try {
 			await fetch('http://localhost:8000/comment/createComment', {
 				method: 'POST',
@@ -59,16 +61,32 @@ const Post = ({ posts, setPosts, token }) => {
 						</div>
 						<div className={styles.postContent}>{post.content}</div>
 						<div className={styles.postComment}>
-							<ModeCommentOutlinedIcon
-								onClick={() => {
-									setComments((prev) => {
-										var temp = [...prev];
-										temp[index] = !temp[index];
-										return temp;
-									});
-								}}
-							/>
-							<AddCommentOutlinedIcon onClick={() => setGiveComment(index)} />
+							{
+								<ForumOutlinedIcon
+									style={{
+										color: `${comments[index] ? '#9146ff' : '#222'}`,
+									}}
+									onClick={() => {
+										setComments((prev) => {
+											var temp = [...prev];
+											temp[index] = !temp[index];
+											return temp;
+										});
+									}}
+								/>
+							}
+
+							{giveComment != index && (
+								<AddCommentOutlinedIcon onClick={() => setGiveComment(index)} />
+							)}
+							{giveComment == index && (
+								<CloseOutlinedIcon
+									style={{ color: 'red' }}
+									onClick={() => {
+										setGiveComment(null);
+									}}
+								/>
+							)}
 						</div>
 
 						{giveComment === index && (

@@ -9,6 +9,9 @@
 .Comment {
 	margin-top: 0.5rem;
 	box-sizing: border-box;
+	border-top: 1px solid rgba(145, 70, 255, 0.1);
+	border-radius: 0 !important;
+	border-bottom-left-radius: inherit !important;
 }
 .postAuthor {
 	font-size: 0.8rem;

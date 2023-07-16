@@ -2,9 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './Components/login/Login';
 import Dashboard from './Components/dashboard/Dashboard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function App() {
 	const [token, setToken] = useState('');
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			setToken(JSON.parse(localStorage.getItem('token')));
+			console.log(JSON.parse(localStorage.getItem('token')));
+		}
+	}, []);
 	return (
 		<div className='App'>
 			<BrowserRouter>
@@ -13,7 +19,9 @@ function App() {
 						path='/'
 						element={<Login token={token} setToken={setToken} />}
 					/>
-					<Route path='/dashboard' element={<Dashboard token={token} />} />
+					{token != '' && (
+						<Route path='/dashboard' element={<Dashboard token={token} />} />
+					)}
 				</Routes>
 			</BrowserRouter>
 		</div>
