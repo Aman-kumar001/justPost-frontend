@@ -39,6 +39,8 @@ const Dashboard = ({ token }) => {
 		},
 	]);
 
+	const features = ['Image Upload', 'User inclined content', 'Like a post'];
+
 	const getAllPosts = () => {
 		fetch('http://localhost:8000/post/getAllPosts')
 			.then((res) => res.json())
@@ -82,7 +84,26 @@ const Dashboard = ({ token }) => {
 			<Navbar />
 			<div className={styles.view}>
 				<div className={styles.LeftPanel}>
-					<div className={styles.updates}>Future Updates</div>
+					<div>
+						<div className={styles.updates}>Future Updates</div>
+						<div>
+							<ul className={styles.features}>
+								{features.map((feature) => (
+									<li>{feature}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div className={styles.updates}>Future Updates</div>
+						<div>
+							<ul className={styles.features}>
+								{features.map((feature) => (
+									<li>{feature}</li>
+								))}
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div className={styles.contentSpace}>
 					<form action='' className={styles.postForm}>
