@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import Post from '../Posts/Post';
 
 const Dashboard = () => {
+	const [postContent, setPostContent] = useState('');
 	const [posts, setPosts] = useState([
 		{
 			author: 'Aman',
@@ -36,9 +37,45 @@ const Dashboard = () => {
 			content: 'ths is the second post',
 		},
 	]);
+
+	const getAllPosts = () => {
+		fetch('http://localhost:8000/post/getAllPosts')
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setPosts(data);
+			});
+	};
+
 	useEffect(() => {
-		//get posts here
+		getAllPosts();
 	}, []);
+
+	const postData = async () => {
+		// post data here
+		await fetch('http://localhost:8000/post/createPost', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				content: postContent,
+				author: 'Aman',
+				type: 'post',
+				timeStamp: Date.now(),
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		getAllPosts();
+	};
+
 	return (
 		<div className={styles.container}>
 			<Navbar />
@@ -48,12 +85,20 @@ const Dashboard = () => {
 				</div>
 				<div className={styles.contentSpace}>
 					<form action='' className={styles.postForm}>
-						<TextField />
+						<TextField
+							onChange={(e) => {
+								setPostContent(e.target.value);
+							}}
+						/>
 						<div className={styles.formBtnCont}>
-							<Button variant='contained'>Post</Button>
+							<Button variant='contained' onClick={() => postData()}>
+								Post
+							</Button>
 						</div>
 					</form>
-					{posts.length > 0 && <Post posts={posts} />}
+					{posts && posts.length > 0 && (
+						<Post posts={posts} setPosts={setPosts} />
+					)}
 				</div>
 				<div className={styles.user}>
 					<div className={styles.AvatarCont}>

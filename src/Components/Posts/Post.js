@@ -4,7 +4,7 @@ import styles from './post.module.css';
 import { height } from '@mui/system';
 import CommentIcon from '@mui/icons-material/Comment';
 import Comment from '../Comments/Comment';
-const Post = ({ posts }) => {
+const Post = ({ posts, setPosts }) => {
 	const [comments, setComments] = useState([]);
 	useEffect(() => {
 		var temp = [];
@@ -33,8 +33,8 @@ const Post = ({ posts }) => {
 								}}
 							/>
 						</div>
-						{comments[index] && post?.comment && (
-							<Comment comment={post?.comment} />
+						{comments[index] && post.comments && post?.comments.length > 0 && (
+							<Comment comment={post?.comments} setPosts={setPosts} />
 						)}
 					</div>
 				);
