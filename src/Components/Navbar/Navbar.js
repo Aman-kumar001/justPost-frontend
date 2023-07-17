@@ -15,6 +15,7 @@ const Navbar = () => {
 			</div>
 			<div>
 				<LogoutOutlinedIcon
+					style={{ color: 'grey' }}
 					onClick={() => {
 						Logout();
 					}}

@@ -80,6 +80,7 @@ const Comment = ({ comment, setPosts, token }) => {
 									border: '1px solid red',
 									borderRadius: '4px',
 									padding: '0.1rem',
+									backgroundColor: 'white',
 								}}
 								onClick={() => {
 									setGiveReply(null);

@@ -10,14 +10,14 @@ const Login = ({ token, setToken }) => {
 	const [allUsers, setAllUsers] = useState([]);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		fetch('http://localhost:8000/users/getAllNames')
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				setAllUsers(data);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	fetch('http://localhost:8000/users/getAllNames')
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 			setAllUsers(data);
+	// 		});
+	// }, []);
 
 	const loginUser = async () => {
 		await fetch('http://localhost:8000/users/logInUser', {

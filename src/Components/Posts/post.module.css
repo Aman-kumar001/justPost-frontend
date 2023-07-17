@@ -11,7 +11,7 @@
 	padding: 0.75rem 1rem;
 	box-sizing: border-box;
 	border-radius: 4px;
-	box-shadow: 0px 0px 10px 1px rgba(145, 70, 255, 0.15);
+	box-shadow: 0px 0px 10px 1px rgba(29, 155, 240, 0.15);
 }
 .postContent {
 	color: #222;
@@ -22,7 +22,7 @@
 	gap: 0.2rem;
 	align-items: center;
 	margin-bottom: 0.5rem;
-	color: #222;
+	color: #14171a;
 	font-weight: 600;
 }
 .post .authorAvatar {
@@ -32,14 +32,14 @@
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-color: #313131;
+	background-color: #14171a;
 }
 .post .authorAvatar svg {
 	width: 1em;
 }
 .postComment {
 	margin-top: 0.5rem;
-	color: #222;
+	color: #14171a;
 	height: fit-content;
 	display: flex;
 	align-items: center;
@@ -47,14 +47,15 @@
 }
 .postComment svg {
 	height: 1rem;
+	color: #14171a;
 }
 .replyButtonContainer button {
-	background-color: #9146ff;
+	background-color: #1d9bf0;
 	color: white;
 	border: none;
 	padding: 0.2rem 0.5rem;
 	font-family: 'Roboto';
 }
 .replyButtonContainer button:hover {
-	background-color: rgba(145, 70, 255, 0.8);
+	background-color: rgba(29, 155, 240, 0.8);
 }

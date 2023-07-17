@@ -1,0 +1,27 @@
+.cont {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+}
+.cont > div {
+	flex: 1;
+}
+.updates {
+	margin-bottom: 1rem;
+}
+.features li {
+	margin-bottom: 0.5rem;
+	list-style: none;
+	color: grey;
+}
+.updates {
+	max-width: 7rem;
+	color: white;
+	text-align: center;
+	background-color: #1d9bf0 !important;
+	border-radius: 4px;
+	padding: 0.3rem 0.5rem;
+	font-weight: 500;
+	font-family: 'Roboto';
+}

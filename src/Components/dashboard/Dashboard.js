@@ -4,25 +4,54 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import styles from './dashboard.module.css';
 import Navbar from '../Navbar/Navbar';
 import Post from '../Posts/Post';
+import Features from '../features/features';
+import useWindowDimensions from '../../Utils/screenDimension';
 
 const Dashboard = ({ token }) => {
 	const [postContent, setPostContent] = useState('');
+	const { height, width } = useWindowDimensions();
 	const [posts, setPosts] = useState([
 		{
 			author: 'Aman',
 
 			content:
 				'laurem  ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lore mauris et justo',
-			comment: [
+			comments: [
 				{
 					author: 'aman',
 					content: 'this is the first comment',
 					level: 1,
-					Comment: [
+					comments: [
 						{
 							author: 'aman',
 							content: 'this is the first reply',
 							level: 2,
+							comments: [
+								{
+									author: 'aman',
+									content: 'this is the first reply',
+									level: 2,
+									comments: [
+										{
+											author: 'aman',
+											content: 'this is the first reply',
+											level: 2,
+										},
+									],
+								},
+							],
+						},
+						{
+							author: 'aman',
+							content: 'this is the first reply',
+							level: 2,
+							comments: [
+								{
+									author: 'aman',
+									content: 'this is the first reply',
+									level: 2,
+								},
+							],
 						},
 					],
 				},
@@ -30,6 +59,13 @@ const Dashboard = ({ token }) => {
 					author: 'aman',
 					content: 'this is the second comment',
 					level: 1,
+					Comments: [
+						{
+							author: 'aman',
+							content: 'this is the first reply',
+							level: 2,
+						},
+					],
 				},
 			],
 		},
@@ -39,7 +75,16 @@ const Dashboard = ({ token }) => {
 		},
 	]);
 
-	const features = ['Image Upload', 'User inclined content', 'Like a post'];
+	const existingFeatures = [
+		'User Authentication',
+		'Hierarchical Commenting',
+		'User friendly UI',
+	];
+	const upcomingFeatures = [
+		'Image Upload',
+		'User inclined content',
+		'Like a post',
+	];
 
 	const getAllPosts = () => {
 		fetch('http://localhost:8000/post/getAllPosts')
@@ -51,7 +96,7 @@ const Dashboard = ({ token }) => {
 	};
 
 	useEffect(() => {
-		getAllPosts();
+		// getAllPosts();
 	}, []);
 
 	const postData = async () => {
@@ -83,29 +128,21 @@ const Dashboard = ({ token }) => {
 		<div className={styles.container}>
 			<Navbar />
 			<div className={styles.view}>
-				<div className={styles.LeftPanel}>
-					<div>
-						<div className={styles.updates}>Future Updates</div>
-						<div>
-							<ul className={styles.features}>
-								{features.map((feature) => (
-									<li>{feature}</li>
-								))}
-							</ul>
-						</div>
+				{width > 768 && (
+					<div className={styles.LeftPanel}>
+						<Features
+							upcomingFeatures={upcomingFeatures}
+							existingFeatures={existingFeatures}
+						/>
 					</div>
-					<div>
-						<div className={styles.updates}>Future Updates</div>
-						<div>
-							<ul className={styles.features}>
-								{features.map((feature) => (
-									<li>{feature}</li>
-								))}
-							</ul>
-						</div>
-					</div>
-				</div>
+				)}
 				<div className={styles.contentSpace}>
+					{width <= 768 && (
+						<div className={styles.mobileViewOptions}>
+							<span>Features</span>
+							<span>User</span>
+						</div>
+					)}
 					<form action='' className={styles.postForm}>
 						<TextField
 							onChange={(e) => {
@@ -122,14 +159,16 @@ const Dashboard = ({ token }) => {
 						<Post posts={posts} setPosts={setPosts} token={token} />
 					)}
 				</div>
-				<div className={styles.user}>
-					<div className={styles.AvatarCont}>
-						<PersonOutlineOutlinedIcon className={styles.avatar} />
+				{width > 768 && (
+					<div className={styles.user}>
+						<div className={styles.AvatarCont}>
+							<PersonOutlineOutlinedIcon className={styles.avatar} />
+						</div>
+						<div className={styles.userDetails}>
+							<h2>{token.name}</h2>
+						</div>
 					</div>
-					<div className={styles.userDetails}>
-						<h2>{token.name}</h2>
-					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);
