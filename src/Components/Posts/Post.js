@@ -64,7 +64,7 @@ const Post = ({ posts, setPosts, token }) => {
 							{
 								<ForumOutlinedIcon
 									style={{
-										color: `${comments[index] ? '#1D9BF0' : 'grey'}`,
+										color: `${comments[index] ? '#2a475e' : 'grey'}`,
 									}}
 									onClick={() => {
 										setComments((prev) => {

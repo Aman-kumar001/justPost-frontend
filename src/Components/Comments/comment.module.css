@@ -3,7 +3,8 @@
 	border-left: 1px solid #1d9bf0;
 	box-sizing: border-box;
 	width: auto;
-	color: #aab8c2;
+	color: grey;
+	font-weight: 300;
 	border-radius: 0 !important;
 	border-bottom-left-radius: inherit !important;
 }
@@ -18,6 +19,7 @@
 	font-size: 0.8rem;
 	display: flex;
 	gap: 0.2rem;
+	font-weight: 700;
 	align-items: center;
 	margin-bottom: 0.2rem;
 	justify-content: space-between;

@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar';
 import Post from '../Posts/Post';
 import Features from '../features/features';
 import useWindowDimensions from '../../Utils/screenDimension';
+import Popup from '../../Utils/Popup';
 
 const Dashboard = ({ token }) => {
 	const [postContent, setPostContent] = useState('');
@@ -79,6 +80,7 @@ const Dashboard = ({ token }) => {
 		'User Authentication',
 		'Hierarchical Commenting',
 		'User friendly UI',
+		'No data lost even on refresh',
 	];
 	const upcomingFeatures = [
 		'Image Upload',
@@ -124,9 +126,15 @@ const Dashboard = ({ token }) => {
 		getAllPosts();
 	};
 
+	const currPopup = (component) => {
+		console.log('clicked');
+		return <Popup component={component} />;
+	};
+
 	return (
 		<div className={styles.container}>
 			<Navbar />
+			{currPopup}
 			<div className={styles.view}>
 				{width > 768 && (
 					<div className={styles.LeftPanel}>
@@ -139,7 +147,13 @@ const Dashboard = ({ token }) => {
 				<div className={styles.contentSpace}>
 					{width <= 768 && (
 						<div className={styles.mobileViewOptions}>
-							<span>Features</span>
+							<span
+							// onClick={() => {
+							// 	currPopup(<Features />);
+							// }}
+							>
+								Features
+							</span>
 							<span>User</span>
 						</div>
 					)}
