@@ -3,8 +3,8 @@
 	border-left: 1px solid #1d9bf0;
 	box-sizing: border-box;
 	width: auto;
-	color: grey;
-	font-weight: 300;
+	color: #4a76a8;
+	font-weight: 500;
 	border-radius: 0 !important;
 	border-bottom-left-radius: inherit !important;
 }
@@ -34,6 +34,7 @@
 	width: 1rem;
 	height: 1rem;
 	border-radius: 50%;
+	background-color: #4a76a8;
 }
 .postAuthor .authorAvatar svg {
 	width: 1em;
@@ -58,7 +59,7 @@
 }
 .postComment {
 	margin-top: 0.1rem;
-	color: #14171a;
+	color: #4a76a8;
 	height: fit-content;
 	display: flex;
 	align-items: center;
