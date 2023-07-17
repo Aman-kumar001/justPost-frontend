@@ -85,10 +85,38 @@
 	bottom: -10%;
 	left: 1rem;
 }
-.handHidden {
-	display: none;
+.handHiddenRight {
+	/* border: 1px solid black; */
+	transform-origin: 82% 82%;
+	transform: rotate(-70deg);
+	/* animation: sweep 0.5s ease-in-out infinite; */
+	transition: transform 0.2s ease-in-out;
 }
-
+.handHiddenLeft {
+	/* border: 1px solid black; */
+	transform-origin: 18% 82%;
+	transform: rotate(70deg);
+	/* animation: sweep 0.5s ease-in-out infinite; */
+	transition: transform 0.2s ease-in-out;
+}
+.handLeft {
+	transform-origin: 20% 80%;
+	transform: rotate(0deg);
+	transition: transform 0.5s ease-in-out;
+}
+.handRight {
+	transform-origin: 80% 80%;
+	transform: rotate(0deg);
+	transition: transform 0.5s ease-in-out;
+}
+@keyframes sweep {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 @media screen and (max-width: 1000px) {
 	.login {
 		width: 50%;
