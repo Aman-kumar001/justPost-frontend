@@ -15,14 +15,14 @@ function App() {
 		<div className='App'>
 			<BrowserRouter>
 				<Routes>
-					{/* <Route
+					<Route
 						path='/'
 						element={<Login token={token} setToken={setToken} />}
 					/>
 					{token != '' && (
 						<Route path='/dashboard' element={<Dashboard token={token} />} />
-					)} */}
-					<Route path='/' element={<Dashboard token={token} />} />
+					)}
+					{/* <Route path='/' element={<Dashboard token={token} />} /> */}
 				</Routes>
 			</BrowserRouter>
 		</div>

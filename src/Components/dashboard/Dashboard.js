@@ -11,6 +11,7 @@ import Popup from '../../Utils/Popup';
 const Dashboard = ({ token }) => {
 	const [postContent, setPostContent] = useState('');
 	const { height, width } = useWindowDimensions();
+	const [popup, setPopup] = useState();
 	const [posts, setPosts] = useState([
 		{
 			author: 'Aman',
@@ -98,7 +99,7 @@ const Dashboard = ({ token }) => {
 	};
 
 	useEffect(() => {
-		// getAllPosts();
+		getAllPosts();
 	}, []);
 
 	const postData = async () => {
@@ -127,14 +128,14 @@ const Dashboard = ({ token }) => {
 	};
 
 	const currPopup = (component) => {
-		console.log('clicked');
-		return <Popup component={component} />;
+		setPopup(<Popup component={component} setPopup={setPopup} />);
+		// console.log(temp);
 	};
 
 	return (
 		<div className={styles.container}>
 			<Navbar />
-			{currPopup}
+			{width <= 768 && popup}
 			<div className={styles.view}>
 				{width > 768 && (
 					<div className={styles.LeftPanel}>
@@ -148,13 +149,33 @@ const Dashboard = ({ token }) => {
 					{width <= 768 && (
 						<div className={styles.mobileViewOptions}>
 							<span
-							// onClick={() => {
-							// 	currPopup(<Features />);
-							// }}
+								onClick={() => {
+									currPopup(
+										<Features
+											upcomingFeatures={upcomingFeatures}
+											existingFeatures={existingFeatures}
+										/>
+									);
+								}}
 							>
 								Features
 							</span>
-							<span>User</span>
+							<span
+								onClick={() =>
+									currPopup(
+										<div className={styles.user}>
+											<div className={styles.AvatarCont}>
+												<PersonOutlineOutlinedIcon className={styles.avatar} />
+											</div>
+											<div className={styles.userDetails}>
+												<h2>{token.name}</h2>
+											</div>
+										</div>
+									)
+								}
+							>
+								User
+							</span>
 						</div>
 					)}
 					<form action='' className={styles.postForm}>

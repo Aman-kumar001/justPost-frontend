@@ -68,12 +68,12 @@
 }
 .postComment svg {
 	height: 1rem;
-	color: #1d9bf0;
+	color: #1d9bf090;
 }
 .postComment span {
 	font-size: 0.7rem;
-	color: #1d9bf0;
-	border: 1px solid #1d9bf0;
+	color: #1d9bf090;
+	border: 1px solid #1d9bf090;
 	border-radius: 4px;
 	padding: 0.1rem 0.2rem;
 }
