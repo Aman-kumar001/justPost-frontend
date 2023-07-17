@@ -4,7 +4,7 @@
 .container {
 	margin-top: 1rem;
 	box-sizing: border-box;
-	color: #1d9bf0;
+	color: #222;
 }
 .post {
 	margin: 1rem 0;
@@ -14,7 +14,7 @@
 	box-shadow: 0px 0px 10px 1px rgba(29, 155, 240, 0.15);
 }
 .postContent {
-	color: #222;
+	color: #1d9bf0;
 }
 .postAuthor {
 	font-size: 0.8rem;
@@ -22,7 +22,7 @@
 	gap: 0.2rem;
 	align-items: center;
 	margin-bottom: 0.5rem;
-	color: #14171a;
+	color: #1d9bf0;
 	font-weight: 600;
 }
 .post .authorAvatar {
@@ -32,14 +32,14 @@
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-color: #14171a;
+	background-color: #1d9bf0;
 }
 .post .authorAvatar svg {
 	width: 1em;
 }
 .postComment {
 	margin-top: 0.5rem;
-	color: #14171a;
+	color: #1d9bf0;
 	height: fit-content;
 	display: flex;
 	align-items: center;
@@ -47,7 +47,7 @@
 }
 .postComment svg {
 	height: 1rem;
-	color: #14171a;
+	color: grey;
 }
 .replyButtonContainer button {
 	background-color: #1d9bf0;

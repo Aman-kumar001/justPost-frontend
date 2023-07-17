@@ -3,6 +3,7 @@
 	border-left: 1px solid #1d9bf0;
 	box-sizing: border-box;
 	width: auto;
+	color: #aab8c2;
 	border-radius: 0 !important;
 	border-bottom-left-radius: inherit !important;
 }
@@ -26,33 +27,30 @@
 	flex-direction: row;
 	gap: 0.3rem;
 	font-size: 0.9rem;
-	font-weight: 700;
 }
 .postAuthor .authorAvatar {
 	width: 1rem;
 	height: 1rem;
 	border-radius: 50%;
-	background-color: #1d9bf0;
 }
 .postAuthor .authorAvatar svg {
 	width: 1em;
 }
 .commentContent {
 	font-size: 0.9rem;
-	font-weight: 400;
 }
 .showReply {
 	font-size: 0.6rem;
-	color: grey;
+	color: #1d9bf0;
 	cursor: pointer;
 	padding: 0.1rem;
-	border: 1px solid grey;
+	border: 1px solid #1d9bf0;
 	border-radius: 4px;
 }
 .showReply:hover {
-	background-color: grey;
+	background-color: #1d9bf0;
 	color: white;
-	border: 1px solid grey;
+	border: 1px solid #1d9bf0;
 	outline: none;
 	border-radius: 4px;
 }
@@ -71,17 +69,16 @@
 }
 .postComment span {
 	font-size: 0.7rem;
-	font-weight: 100;
-	color: grey;
-	border: 1px solid grey;
+	color: #1d9bf0;
+	border: 1px solid #1d9bf0;
 	border-radius: 4px;
 	padding: 0.1rem 0.2rem;
 }
 .postComment span:hover {
 	cursor: pointer;
-	background-color: grey;
+	background-color: #1d9bf0;
 	color: white;
-	border: 1px solid grey;
+	border: 1px solid #1d9bf0;
 	outline: none;
 	border-radius: 4px;
 }
