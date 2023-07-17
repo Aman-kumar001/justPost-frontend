@@ -11,7 +11,7 @@ const Login = ({ token, setToken }) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch('http://localhost:8000/users/getAllNames')
+		fetch('https://discuss-app.adaptable.app/users/getAllNames')
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -20,7 +20,7 @@ const Login = ({ token, setToken }) => {
 	}, []);
 
 	const loginUser = async () => {
-		await fetch('http://localhost:8000/users/logInUser', {
+		await fetch('https://discuss-app.adaptable.app/users/logInUser', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const Login = ({ token, setToken }) => {
 	};
 
 	const registerUser = async () => {
-		await fetch('http://localhost:8000/users/createUser', {
+		await fetch('https://discuss-app.adaptable.app/users/createUser', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

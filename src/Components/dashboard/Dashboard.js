@@ -90,7 +90,7 @@ const Dashboard = ({ token }) => {
 	];
 
 	const getAllPosts = () => {
-		fetch('http://localhost:8000/post/getAllPosts')
+		fetch('https://discuss-app.adaptable.app/post/getAllPosts')
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -104,7 +104,7 @@ const Dashboard = ({ token }) => {
 
 	const postData = async () => {
 		// post data here
-		await fetch('http://localhost:8000/post/createPost', {
+		await fetch('https://discuss-app.adaptable.app/post/createPost', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

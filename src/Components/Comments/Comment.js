@@ -13,7 +13,7 @@ const Comment = ({ comment, setPosts, token }) => {
 	}, [comment]);
 
 	const getAllPosts = () => {
-		fetch('http://localhost:8000/post/getAllPosts')
+		fetch('https://discuss-app.adaptable.app/post/getAllPosts')
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -23,7 +23,7 @@ const Comment = ({ comment, setPosts, token }) => {
 
 	const postReply = async (level, parent) => {
 		try {
-			await fetch('http://localhost:8000/comment/createComment', {
+			await fetch('https://discuss-app.adaptable.app/comment/createComment', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
