@@ -6,8 +6,8 @@ const Features = ({ existingFeatures, upcomingFeatures }) => {
 				<div className={styles.updates}>Features</div>
 				<div>
 					<ul className={styles.features}>
-						{existingFeatures.map((feature) => (
-							<li>{feature}</li>
+						{existingFeatures.map((feature, index) => (
+							<li key={index}>{feature}</li>
 						))}
 					</ul>
 				</div>
@@ -16,8 +16,8 @@ const Features = ({ existingFeatures, upcomingFeatures }) => {
 				<div className={styles.updates}>Upcoming Updates</div>
 				<div>
 					<ul className={styles.features}>
-						{upcomingFeatures.map((feature) => (
-							<li>{feature}</li>
+						{upcomingFeatures.map((feature, index) => (
+							<li key={index}>{feature}</li>
 						))}
 					</ul>
 				</div>
