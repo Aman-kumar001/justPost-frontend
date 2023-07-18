@@ -82,8 +82,15 @@ const Login = ({ token, setToken }) => {
 						id: data._id,
 						name: data.name,
 					});
+					localStorage.setItem(
+						'token',
+						JSON.stringify({
+							id: data.data[0]._id,
+							name: data.data[0].name,
+						})
+					);
+					navigate('/dashboard');
 				});
-				navigate('/dashboard');
 			} else {
 				setError(true);
 				setTimeout(() => {

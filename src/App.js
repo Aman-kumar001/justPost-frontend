@@ -3,6 +3,7 @@ import './App.css';
 import Login from './Components/login/Login';
 import Dashboard from './Components/dashboard/Dashboard';
 import { useEffect, useState } from 'react';
+import Lost from './Components/lost/Lost';
 function App() {
 	const [token, setToken] = useState('');
 	useEffect(() => {
@@ -22,7 +23,8 @@ function App() {
 					{token != '' && (
 						<Route path='/dashboard' element={<Dashboard token={token} />} />
 					)}
-					{/* <Route path='/' element={<Dashboard token={token} />} /> */}
+					//default route
+					<Route path='*' element={<Lost />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
