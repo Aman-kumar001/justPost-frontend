@@ -23,7 +23,7 @@ function App() {
 					{token != '' && (
 						<Route path='/dashboard' element={<Dashboard token={token} />} />
 					)}
-					//default route
+					{/* //default route */}
 					<Route path='*' element={<Lost />} />
 				</Routes>
 			</BrowserRouter>

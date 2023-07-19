@@ -100,6 +100,7 @@ const Dashboard = ({ token }) => {
 
 	useEffect(() => {
 		getAllPosts();
+		console.log(token);
 	}, []);
 
 	const postData = async () => {
