@@ -8,13 +8,14 @@ const Login = ({ token, setToken }) => {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
 	const [allUsers, setAllUsers] = useState([]);
+	const [typingPwd, setTypingPwd] = useState(false);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch('https://discuss-app.adaptable.app/users/getAllNames')
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				setAllUsers(data);
 			});
 	}, []);
@@ -33,7 +34,7 @@ const Login = ({ token, setToken }) => {
 			.then((res) => {
 				console.log(res);
 				if (res.status == 200) {
-					console.log('loged in');
+					// console.log('loged in');
 					res.json().then((data) => {
 						if (data.data.length > 0) {
 							console.log(data);
@@ -79,14 +80,14 @@ const Login = ({ token, setToken }) => {
 			if (res.status == 200) {
 				res.json().then((data) => {
 					setToken({
-						id: data._id,
-						name: data.name,
+						id: data.data._id,
+						name: data.data.name,
 					});
 					localStorage.setItem(
 						'token',
 						JSON.stringify({
-							id: data.data[0]._id,
-							name: data.data[0].name,
+							id: data.data._id,
+							name: data.data.name,
 						})
 					);
 					navigate('/dashboard');
@@ -197,7 +198,7 @@ const Login = ({ token, setToken }) => {
 							<path
 								id='hand-right'
 								className={
-									password != '' ? styles.handRight : styles.handHiddenRight
+									typingPwd ? styles.handRight : styles.handHiddenRight
 								}
 								d='M273.755 326.523C273.579 326.446 273.348 326.343 273.067 326.215C272.36 325.895 271.336 325.422 270.068 324.812C267.533 323.59 264.031 321.82 260.166 319.625C252.41 315.221 243.295 309.165 237.555 302.465C225.952 288.921 209.5 258.853 198.251 225.424C192.612 208.664 189.336 195.865 189.729 186.135C189.925 181.298 191.028 177.267 193.164 173.898C195.3 170.531 198.514 167.753 203.052 165.491C212.35 160.858 220.449 158.387 228.406 161.478C236.414 164.588 244.593 173.449 253.646 192.415C262.71 211.403 269.587 225.109 279.283 235.925C288.91 246.664 301.26 254.498 321.117 261.948C321.933 283.291 310.211 299.397 298.087 310.258C291.97 315.737 285.78 319.854 281.117 322.6C278.787 323.973 276.841 325.001 275.481 325.685C274.801 326.028 274.267 326.283 273.906 326.453C273.851 326.478 273.801 326.502 273.755 326.523Z'
 								fill='#738DE0'
@@ -206,9 +207,7 @@ const Login = ({ token, setToken }) => {
 							/>
 							<path
 								id='hand-left'
-								className={
-									password != '' ? styles.handLeft : styles.handHiddenLeft
-								}
+								className={typingPwd ? styles.handLeft : styles.handHiddenLeft}
 								d='M69.2083 332.261C69.3744 332.154 69.5959 332.011 69.8674 331.834C70.5262 331.403 71.4796 330.77 72.6537 329.961C75.0024 328.344 78.2313 326.028 81.7497 323.237C88.8116 317.634 96.9436 310.189 101.525 302.674C110.787 287.482 121.9 255.289 127.099 220.662C129.706 203.299 130.648 190.218 128.437 180.753C127.337 176.049 125.467 172.281 122.664 169.329C119.861 166.376 116.068 164.179 111.024 162.711C100.706 159.707 91.9912 158.621 84.4639 162.979C76.9056 167.354 70.2507 177.389 64.5882 197.472C58.917 217.586 54.4819 232.166 46.6419 244.379C38.859 256.503 27.7707 266.226 8.99115 276.813C12.1463 297.845 27.0515 311.689 41.404 320.332C48.6454 324.693 55.707 327.704 60.9604 329.625C63.5858 330.585 65.7563 331.271 67.2675 331.717C68.0229 331.94 68.6134 332.103 69.0132 332.209C69.0843 332.228 69.1494 332.245 69.2083 332.261Z'
 								fill='#738DE0'
 								stroke='black'
@@ -234,6 +233,12 @@ const Login = ({ token, setToken }) => {
 							label='Password'
 							type='password'
 							autoComplete='current-password'
+							onFocus={(e) => {
+								setTypingPwd(true);
+							}}
+							onBlur={(e) => {
+								setTypingPwd(false);
+							}}
 							onChange={(e) => {
 								setPassword(e.target.value);
 							}}
